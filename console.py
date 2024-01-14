@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Pt Defines the HBnB console."""
+"""It Defines the HBnB console."""
 import cmd
 import re
 from shlex import split
@@ -32,7 +32,7 @@ def parse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """It Defines the HolbertonBnB command interpreter.
+    """It Defines the AirBnB command interpreter.
 
     Attributes:
         prompt (str): The command prompt.
