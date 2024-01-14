@@ -2,6 +2,7 @@
 """ This function is for User Class """
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """ User class for inheriting BaseModel """
     email = ""
