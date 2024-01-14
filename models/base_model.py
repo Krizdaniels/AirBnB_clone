@@ -5,8 +5,8 @@ from uuid import uuid4
 import models
 
 
-class BaseModels:
-    """ construct """
+class BaseModel:
+    """ class definitions construct """
 
     def __init__(self, *args, **kwargs):
         """ Construct """
