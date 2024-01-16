@@ -38,7 +38,10 @@ class HBNBCommand(cmd.Cmd):
         prompt (str): The command prompt.
     """
 
-    prompt = "(hbnb) "
+    prompt = '(hbnb) '
+    file_path = "file.json"
+    storage = FileStorage()
+    Storage.reload()
     __classes = {
         "BaseModel",
         "User",
@@ -206,5 +209,5 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
