@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ This funtion is for Class Review """
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class Review(BaseModel):

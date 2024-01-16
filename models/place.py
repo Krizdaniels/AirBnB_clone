@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ This function is for Class Place """
 
-from ase_model import BaseModel
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
