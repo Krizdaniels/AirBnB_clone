@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 """ This function is for Class Place """
 
-from models.base_model import BaseModel
+from ase_model import BaseModel
 
 
 class Place(BaseModel):
     """ Place class that is inheriting BaseModel """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     city_id = ""
     user_id = ""
     name = ""
