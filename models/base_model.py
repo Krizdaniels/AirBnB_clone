@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Class BaseModel """
 from datetime import datetime
-from uuid import uuid4
+import uuid
 import models
 
 
@@ -14,28 +14,20 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key == '__class__':
                     continue
-                elif key == 'updated _at':
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                elif key == 'created_at':
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                if 'id' not in kwargs.keys():
-                    self.id = str(uuid4())
-                if 'created_at' not in kwargs.keys():
-                    self.created_at = datetime.now()
-                if 'updated_at' not in kwargs.keys():
-                    self.updated_at = datetime.now()
+                elif key == 'created_at' or key == 'updated_at':
+                    setattr(self, key, datetime.strptime(value,
+                            "%Y-%m-%dT%H:%M:%S.%f"))
+                else:
                     setattr(self, key, value)
 
             else:
-                self.id = str(uuid4())
-                self.created_at = datetime.now()
-                self.updated_at = self.created_at
-                models.storage.new(self)
+                self.id = str(uuid.uuid4())
+                self.created_at = self.updated_at = datetime.now()
 
         def __str__(self):
-            """ String """
-            return('[' + type(self).__name__ + '] (' + str(self.id) +
-                   ') ' + str(self.__dict__))
+            """ String representation of BaseModel instance"""
+            return "[{}] ({}) {}".format(self.__class__.__name__,
+                                         self.id, self.__dict__)
 
         def save(self):
             """ Save function """
@@ -43,9 +35,15 @@ class BaseModel:
         models.storage.save()
 
         def to_dict(self):
-            """ Return a dictionary """
-            aux_dict = Self.__dict__.copy()
-            aux_dict['__class__'] = self.class__.__name__
-            aux_dict['created_at'] = self.created_at.isoformat()
-            aux_dict['updated_at'] = self.updated_at.isoformat()
-            return aux_dict
+            """ Return object attributes to  dictionary """
+            obj_dict = Self.__dict__.copy()
+            obj_dict['__class__'] = self.class__.__name__
+            obj_dict['created_at'] = self.created_at.isoformat()
+            obj_dict['updated_at'] = self.updated_at.isoformat()
+            return obj_dict
+
+# Example usage:
+# my_instance = BaseModel(name="exmple")
+# my_dict = my_instance.to_dict()
+# my_json_string = json.dumps(my_dict)
+# my_instance.save() # Implement save method in FIleStorage
