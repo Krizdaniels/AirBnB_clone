@@ -38,10 +38,7 @@ class HBNBCommand(cmd.Cmd):
         prompt (str): The command prompt.
     """
 
-    prompt = '(hbnb) '
-    file_path = "file.json"
-    storage = FileStorage()
-    Storage.reload()
+    prompt = "(hbnb) "
     __classes = {
         "BaseModel",
         "User",
@@ -51,6 +48,12 @@ class HBNBCommand(cmd.Cmd):
         "Amenity",
         "Review"
     }
+
+
+class BaseModel:
+    """ Other attributes and method """
+    def __init__(self):
+        self.id = some_id_value
 
     def emptyline(self):
         """The Do nothing upon receiving an empty line."""
