@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""It Defines the HBnB console."""
+"""It defines the HBnB console."""
 import cmd
 import re
 from shlex import split
@@ -32,7 +32,7 @@ def parse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """It Defines the AirBnB command interpreter.
+    """It defines the ALXBnB command interpreter.
 
     Attributes:
         prompt (str): The command prompt.
@@ -49,18 +49,12 @@ class HBNBCommand(cmd.Cmd):
         "Review"
     }
 
-
-class BaseModel:
-    """ Other attributes and method """
-    def __init__(self):
-        self.id = some_id_value
-
     def emptyline(self):
-        """The Do nothing upon receiving an empty line."""
+        """To do nothing upon receiving an empty line."""
         pass
 
     def default(self, arg):
-        """The Default behavior for cmd module when input is invalid"""
+        """The default behavior for cmd module when input is invalid"""
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
@@ -81,7 +75,7 @@ class BaseModel:
         return False
 
     def do_quit(self, arg):
-        """The Quit command to exit the program."""
+        """To quit command to exit the program."""
         return True
 
     def do_EOF(self, arg):
@@ -212,5 +206,5 @@ class BaseModel:
         storage.save()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
